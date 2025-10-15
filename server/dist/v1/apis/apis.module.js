@@ -6,26 +6,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppModule = void 0;
+exports.ApisModule = void 0;
 const common_1 = require("@nestjs/common");
+const apis_service_1 = require("./apis.service");
+const apis_controller_1 = require("./apis.controller");
 const typeorm_1 = require("@nestjs/typeorm");
-const apis_module_1 = require("./v1/apis/apis.module");
-const config_1 = require("@nestjs/config");
-const database_config_1 = require("./utils/config/database.config");
-let AppModule = class AppModule {
+const api_entity_1 = require("./entities/api.entity");
+let ApisModule = class ApisModule {
 };
-exports.AppModule = AppModule;
-exports.AppModule = AppModule = __decorate([
+exports.ApisModule = ApisModule;
+exports.ApisModule = ApisModule = __decorate([
     (0, common_1.Module)({
-        imports: [
-            config_1.ConfigModule.forRoot({
-                isGlobal: true,
-            }),
-            typeorm_1.TypeOrmModule.forRoot(database_config_1.default),
-            apis_module_1.ApisModule,
-        ],
-        controllers: [],
-        providers: [],
+        imports: [typeorm_1.TypeOrmModule.forFeature([api_entity_1.Api])],
+        controllers: [apis_controller_1.ApisController],
+        providers: [apis_service_1.ApisService],
     })
-], AppModule);
-//# sourceMappingURL=app.module.js.map
+], ApisModule);
+//# sourceMappingURL=apis.module.js.map
