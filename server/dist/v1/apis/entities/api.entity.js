@@ -22,7 +22,9 @@ let Api = class Api {
     url;
     product;
     basePath;
+    updatedAt;
     updatedBy;
+    createdAt;
     createdBy;
     endpoints;
     definitions;
@@ -73,7 +75,15 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
+], Api.prototype, "updatedAt", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
 ], Api.prototype, "updatedBy", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Api.prototype, "createdAt", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)

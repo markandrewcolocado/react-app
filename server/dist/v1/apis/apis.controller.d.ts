@@ -5,7 +5,7 @@ export declare class ApisController {
     private readonly apisService;
     constructor(apisService: ApisService);
     create(createApiDto: CreateApiDto): string;
-    findAll(): string;
+    findAll(): Promise<import("./entities/api.entity").Api[]>;
     findOne(id: string): string;
     update(id: string, updateApiDto: UpdateApiDto): string;
     remove(id: string): string;

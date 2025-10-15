@@ -33,7 +33,13 @@ export class Api {
   basePath: string;
 
   @Column()
+  updatedAt: string;
+
+  @Column()
   updatedBy: string;
+
+  @Column()
+  createdAt: string;
 
   @Column()
   createdBy: string;

@@ -14,7 +14,7 @@ export class ApisController {
 
   @Get()
   findAll() {
-    console.log('USER', process.env.MYSQL_USER)
+    // console.log('USER', process.env.MYSQL_USER)
     return this.apisService.findAll();
   }
 

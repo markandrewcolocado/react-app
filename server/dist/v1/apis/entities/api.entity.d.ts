@@ -9,7 +9,9 @@ export declare class Api {
     url: string;
     product: string;
     basePath: string;
+    updatedAt: string;
     updatedBy: string;
+    createdAt: string;
     createdBy: string;
     endpoints: string;
     definitions: string;

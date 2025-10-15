@@ -26,7 +26,7 @@ let ApisService = class ApisService {
         return 'This action adds a new api';
     }
     findAll() {
-        return `This action returns all apis`;
+        return this.apisRepository.find();
     }
     findOne(id) {
         return `This action returns a #${id} api`;

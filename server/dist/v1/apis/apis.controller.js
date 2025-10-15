@@ -26,7 +26,6 @@ let ApisController = class ApisController {
         return this.apisService.create(createApiDto);
     }
     findAll() {
-        console.log('USER', process.env.MYSQL_USER);
         return this.apisService.findAll();
     }
     findOne(id) {

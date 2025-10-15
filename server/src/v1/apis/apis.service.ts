@@ -17,8 +17,8 @@ export class ApisService {
   }
 
   findAll() {
-    // return this.apisRepository.find();
-    return `This action returns all apis`;
+    return this.apisRepository.find();
+    // return `This action returns all apis`;
   }
 
   findOne(id: number) {

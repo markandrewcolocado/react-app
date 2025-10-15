@@ -6,25 +6,29 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppModule = void 0;
+exports.DatabaseModule = void 0;
 const common_1 = require("@nestjs/common");
-const apis_module_1 = require("./v1/apis/apis.module");
 const config_1 = require("@nestjs/config");
-const database_module_1 = require("./database/database.module");
-let AppModule = class AppModule {
+const typeorm_1 = require("@nestjs/typeorm");
+let DatabaseModule = class DatabaseModule {
 };
-exports.AppModule = AppModule;
-exports.AppModule = AppModule = __decorate([
+exports.DatabaseModule = DatabaseModule;
+exports.DatabaseModule = DatabaseModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            config_1.ConfigModule.forRoot({
-                isGlobal: true,
+            typeorm_1.TypeOrmModule.forRootAsync({
+                useFactory: (configService) => ({
+                    type: 'mysql',
+                    host: process.env.MYSQL_HOST,
+                    port: Number(process.env.MYSQL_PORT),
+                    username: process.env.MYSQL_USER,
+                    password: process.env.MYSQL_PASS,
+                    database: process.env.MYSQL_NAME,
+                    autoLoadEntities: true,
+                }),
+                inject: [config_1.ConfigService]
             }),
-            apis_module_1.ApisModule,
-            database_module_1.DatabaseModule,
         ],
-        controllers: [],
-        providers: [],
     })
-], AppModule);
-//# sourceMappingURL=app.module.js.map
+], DatabaseModule);
+//# sourceMappingURL=database.module.js.map

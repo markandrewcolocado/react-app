@@ -6,7 +6,7 @@ export declare class ApisService {
     private apisRepository;
     constructor(apisRepository: Repository<Api>);
     create(createApiDto: CreateApiDto): string;
-    findAll(): string;
+    findAll(): Promise<Api[]>;
     findOne(id: number): string;
     update(id: number, updateApiDto: UpdateApiDto): string;
     remove(id: number): string;
