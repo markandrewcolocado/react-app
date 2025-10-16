@@ -10,7 +10,8 @@ exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const apis_module_1 = require("./v1/apis/apis.module");
 const config_1 = require("@nestjs/config");
-const database_module_1 = require("./database/database.module");
+const typeorm_1 = require("@nestjs/typeorm");
+const database_config_1 = require("./utils/config/database.config");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -19,9 +20,12 @@ exports.AppModule = AppModule = __decorate([
         imports: [
             config_1.ConfigModule.forRoot({
                 isGlobal: true,
+                load: [database_config_1.default]
             }),
             apis_module_1.ApisModule,
-            database_module_1.DatabaseModule,
+            typeorm_1.TypeOrmModule.forRootAsync({
+                useFactory: database_config_1.default
+            })
         ],
         controllers: [],
         providers: [],

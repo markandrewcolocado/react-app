@@ -1,15 +1,19 @@
 import { Module } from '@nestjs/common';
 import { ApisModule } from './v1/apis/apis.module';
 import { ConfigModule } from '@nestjs/config';
-import { DatabaseModule } from './database/database.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import databaseConfig from './utils/config/database.config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-    }), // to load env variables
+      load: [databaseConfig]
+    }),
     ApisModule,
-    DatabaseModule,
+    TypeOrmModule.forRootAsync({
+      useFactory: databaseConfig
+    })
   ],
   controllers: [],
   providers: [],

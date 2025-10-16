@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { CreateApiDto } from './dto/create-api.dto';
 import { UpdateApiDto } from './dto/update-api.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Api } from './entities/api.entity';
 import { Repository } from 'typeorm';
+import { Api } from './entities/api.entity';
 
 @Injectable()
 export class ApisService {
@@ -17,7 +17,15 @@ export class ApisService {
   }
 
   findAll() {
-    return this.apisRepository.find();
+    return this.apisRepository.find({
+      where: {
+        provider: 'ubp',
+        catalog: 'uat'
+      },
+      
+      skip: 0, // Skip the specified number of records
+      take: 2 // Number of records to fetch per page
+    });
     // return `This action returns all apis`;
   }
 

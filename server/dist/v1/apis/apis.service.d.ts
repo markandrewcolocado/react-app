@@ -1,7 +1,7 @@
 import { CreateApiDto } from './dto/create-api.dto';
 import { UpdateApiDto } from './dto/update-api.dto';
-import { Api } from './entities/api.entity';
 import { Repository } from 'typeorm';
+import { Api } from './entities/api.entity';
 export declare class ApisService {
     private apisRepository;
     constructor(apisRepository: Repository<Api>);

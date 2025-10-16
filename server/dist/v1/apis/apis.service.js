@@ -15,8 +15,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ApisService = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-const api_entity_1 = require("./entities/api.entity");
 const typeorm_2 = require("typeorm");
+const api_entity_1 = require("./entities/api.entity");
 let ApisService = class ApisService {
     apisRepository;
     constructor(apisRepository) {
@@ -26,7 +26,14 @@ let ApisService = class ApisService {
         return 'This action adds a new api';
     }
     findAll() {
-        return this.apisRepository.find();
+        return this.apisRepository.find({
+            where: {
+                provider: 'ubp',
+                catalog: 'uat'
+            },
+            skip: 0,
+            take: 2
+        });
     }
     findOne(id) {
         return `This action returns a #${id} api`;

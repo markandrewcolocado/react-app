@@ -14,6 +14,7 @@ export class ApisController {
 
   @Get()
   findAll() {
+    console.log(__dirname)
     // console.log('USER', process.env.MYSQL_USER)
     return this.apisService.findAll();
   }

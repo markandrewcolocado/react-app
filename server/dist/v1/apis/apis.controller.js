@@ -26,6 +26,7 @@ let ApisController = class ApisController {
         return this.apisService.create(createApiDto);
     }
     findAll() {
+        console.log(__dirname);
         return this.apisService.findAll();
     }
     findOne(id) {
