@@ -4,6 +4,7 @@ import { UpdateApiDto } from './dto/update-api.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Api } from './entities/api.entity';
+import { ApiPaginationDto } from './dto/api-pagination.dto';
 
 @Injectable()
 export class ApisService {
@@ -16,17 +17,30 @@ export class ApisService {
     return 'This action adds a new api';
   }
 
-  findAll() {
-    return this.apisRepository.find({
-      where: {
-        provider: 'ubp',
-        catalog: 'uat'
-      },
-      
-      skip: 0, // Skip the specified number of records
-      take: 2 // Number of records to fetch per page
-    });
+  findAll(apiPaginationDto: ApiPaginationDto) {
+    const query = this.buildPaginationQuery(apiPaginationDto);
+    console.log(query);
+    // return query;
+    return this.apisRepository.find(query);
     // return `This action returns all apis`;
+  }
+
+  private buildPaginationQuery(apiPaginationDto: ApiPaginationDto) {
+    const { provider, catalog, limit, offset } = apiPaginationDto;
+
+    // Provider is required when Catalog is supplied, and the other way around
+    if (provider || catalog) {
+      // TODO: Create a universal error catcher
+      if (!provider || !catalog) throw new Error('Provider & Catalog should have values.');
+    }
+
+    if (offset && !limit) throw new Error('Offset and Limit should have values.');
+
+    return {
+      where: { provider, catalog },
+      skip: offset ?? undefined, // Skip the specified number of records (offset)
+      take: limit ?? undefined,   // Number of records to fetch per page (limit)
+    }
   }
 
   findOne(id: number) {

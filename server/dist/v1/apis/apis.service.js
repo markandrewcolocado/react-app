@@ -25,15 +25,24 @@ let ApisService = class ApisService {
     create(createApiDto) {
         return 'This action adds a new api';
     }
-    findAll() {
-        return this.apisRepository.find({
-            where: {
-                provider: 'ubp',
-                catalog: 'uat'
-            },
-            skip: 0,
-            take: 2
-        });
+    findAll(apiPaginationDto) {
+        const query = this.buildPaginationQuery(apiPaginationDto);
+        console.log(query);
+        return this.apisRepository.find(query);
+    }
+    buildPaginationQuery(apiPaginationDto) {
+        const { provider, catalog, limit, offset } = apiPaginationDto;
+        if (provider || catalog) {
+            if (!provider || !catalog)
+                throw new Error('Provider & Catalog should have values.');
+        }
+        if (offset && !limit)
+            throw new Error('Offset and Limit should have values.');
+        return {
+            where: { provider, catalog },
+            skip: offset ?? undefined,
+            take: limit ?? undefined,
+        };
     }
     findOne(id) {
         return `This action returns a #${id} api`;

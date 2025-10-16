@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const apis_service_1 = require("./apis.service");
 const create_api_dto_1 = require("./dto/create-api.dto");
 const update_api_dto_1 = require("./dto/update-api.dto");
+const api_pagination_dto_1 = require("./dto/api-pagination.dto");
 let ApisController = class ApisController {
     apisService;
     constructor(apisService) {
@@ -25,9 +26,8 @@ let ApisController = class ApisController {
     create(createApiDto) {
         return this.apisService.create(createApiDto);
     }
-    findAll() {
-        console.log(__dirname);
-        return this.apisService.findAll();
+    findAll(apiPaginationDto) {
+        return this.apisService.findAll(apiPaginationDto);
     }
     findOne(id) {
         return this.apisService.findOne(+id);
@@ -49,8 +49,9 @@ __decorate([
 ], ApisController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)(),
+    __param(0, (0, common_1.Query)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [api_pagination_dto_1.ApiPaginationDto]),
     __metadata("design:returntype", void 0)
 ], ApisController.prototype, "findAll", null);
 __decorate([

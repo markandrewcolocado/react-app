@@ -8,5 +8,5 @@ export default (): MysqlConnectionOptions => ({
     username: process.env.MYSQL_USER,
     password: process.env.MYSQL_PASS,
     database: process.env.MYSQL_NAME,
-    entities: [ path.resolve(__dirname, '../..') + '/**/*.entity{.ts,.js}']
+    entities: [ path.resolve(__dirname, '../..') + '/**/*.entity{.ts,.js}']  // Automatically load entities
 });

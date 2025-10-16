@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
 import { ApisService } from './apis.service';
 import { CreateApiDto } from './dto/create-api.dto';
 import { UpdateApiDto } from './dto/update-api.dto';
+import { ApiPaginationDto } from './dto/api-pagination.dto';
 
 @Controller('v1/apis')
 export class ApisController {
@@ -13,10 +14,8 @@ export class ApisController {
   }
 
   @Get()
-  findAll() {
-    console.log(__dirname)
-    // console.log('USER', process.env.MYSQL_USER)
-    return this.apisService.findAll();
+  findAll(@Query() apiPaginationDto: ApiPaginationDto) {
+    return this.apisService.findAll(apiPaginationDto);
   }
 
   @Get(':id')
