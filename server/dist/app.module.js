@@ -8,9 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
-const apis_module_1 = require("./v1/apis/apis.module");
 const config_1 = require("@nestjs/config");
 const typeorm_1 = require("@nestjs/typeorm");
+const apis_module_1 = require("./v1/apis/apis.module");
+const microservices_module_1 = require("./v1/microservices/microservices.module");
 const database_config_1 = require("./utils/config/database.config");
 let AppModule = class AppModule {
 };
@@ -22,10 +23,11 @@ exports.AppModule = AppModule = __decorate([
                 isGlobal: true,
                 load: [database_config_1.default]
             }),
-            apis_module_1.ApisModule,
             typeorm_1.TypeOrmModule.forRootAsync({
                 useFactory: database_config_1.default
-            })
+            }),
+            apis_module_1.ApisModule,
+            microservices_module_1.MicroservicesModule
         ],
         controllers: [],
         providers: [],

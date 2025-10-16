@@ -19,10 +19,8 @@ export class ApisService {
 
   findAll(apiPaginationDto: ApiPaginationDto) {
     const query = this.buildPaginationQuery(apiPaginationDto);
-    console.log(query);
-    // return query;
+
     return this.apisRepository.find(query);
-    // return `This action returns all apis`;
   }
 
   private buildPaginationQuery(apiPaginationDto: ApiPaginationDto) {

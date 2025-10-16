@@ -27,7 +27,6 @@ let ApisService = class ApisService {
     }
     findAll(apiPaginationDto) {
         const query = this.buildPaginationQuery(apiPaginationDto);
-        console.log(query);
         return this.apisRepository.find(query);
     }
     buildPaginationQuery(apiPaginationDto) {
