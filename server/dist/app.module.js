@@ -12,6 +12,7 @@ const config_1 = require("@nestjs/config");
 const typeorm_1 = require("@nestjs/typeorm");
 const apis_module_1 = require("./v1/apis/apis.module");
 const microservices_module_1 = require("./v1/microservices/microservices.module");
+const atms_module_1 = require("./v1/atms/atms.module");
 const database_config_1 = require("./utils/config/database.config");
 let AppModule = class AppModule {
 };
@@ -27,7 +28,8 @@ exports.AppModule = AppModule = __decorate([
                 useFactory: database_config_1.default
             }),
             apis_module_1.ApisModule,
-            microservices_module_1.MicroservicesModule
+            microservices_module_1.MicroservicesModule,
+            atms_module_1.AtmsModule
         ],
         controllers: [],
         providers: [],

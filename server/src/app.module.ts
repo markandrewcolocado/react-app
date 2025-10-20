@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ApisModule } from './v1/apis/apis.module';
 import { MicroservicesModule } from './v1/microservices/microservices.module';
+import { AtmsModule } from './v1/atms/atms.module';
 import databaseConfig from './utils/config/database.config';
 
 @Module({
@@ -15,7 +16,8 @@ import databaseConfig from './utils/config/database.config';
       useFactory: databaseConfig
     }),
     ApisModule,
-    MicroservicesModule
+    MicroservicesModule,
+    AtmsModule
   ],
   controllers: [],
   providers: [],
