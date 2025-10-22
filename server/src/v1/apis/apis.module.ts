@@ -5,7 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Api } from './entities/api.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Api])],
+  // imports: [TypeOrmModule.forFeature([Api])],
   controllers: [ApisController],
   providers: [ApisService],
 })

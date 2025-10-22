@@ -9,8 +9,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const config_1 = require("@nestjs/config");
-const typeorm_1 = require("@nestjs/typeorm");
-const apis_module_1 = require("./v1/apis/apis.module");
 const microservices_module_1 = require("./v1/microservices/microservices.module");
 const atms_module_1 = require("./v1/atms/atms.module");
 const database_config_1 = require("./utils/config/database.config");
@@ -24,10 +22,6 @@ exports.AppModule = AppModule = __decorate([
                 isGlobal: true,
                 load: [database_config_1.default]
             }),
-            typeorm_1.TypeOrmModule.forRootAsync({
-                useFactory: database_config_1.default
-            }),
-            apis_module_1.ApisModule,
             microservices_module_1.MicroservicesModule,
             atms_module_1.AtmsModule
         ],

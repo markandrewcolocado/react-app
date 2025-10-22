@@ -9,8 +9,8 @@ import { ApiPaginationDto } from './dto/api-pagination.dto';
 @Injectable()
 export class ApisService {
   constructor(
-    @InjectRepository(Api)
-    private apisRepository: Repository<Api>
+    // @InjectRepository(Api)
+    // private apisRepository: Repository<Api>
   ) {}
 
   create(createApiDto: CreateApiDto) {
@@ -19,8 +19,8 @@ export class ApisService {
 
   findAll(apiPaginationDto: ApiPaginationDto) {
     const query = this.buildPaginationQuery(apiPaginationDto);
-
-    return this.apisRepository.find(query);
+    return 'Return all apis.';
+    // return this.apisRepository.find(query);
   }
 
   private buildPaginationQuery(apiPaginationDto: ApiPaginationDto) {

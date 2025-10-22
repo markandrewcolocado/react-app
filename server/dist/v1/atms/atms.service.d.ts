@@ -4,9 +4,9 @@ import { HttpService } from '@nestjs/axios';
 export declare class AtmsService {
     private readonly api;
     constructor(api: HttpService);
-    create(createAtmDto: CreateAtmDto): string;
-    findAll(): Promise<import("axios").AxiosResponse<any, any, {}>>;
-    findOne(id: number): string;
-    update(id: number, updateAtmDto: UpdateAtmDto): string;
-    remove(id: number): string;
+    create(createAtmDto: CreateAtmDto, env: string): Promise<any>;
+    findAll(env: string): Promise<any>;
+    findOne(env: string, id: number): Promise<any>;
+    update(env: string, id: number, updateAtmDto: UpdateAtmDto): Promise<any>;
+    remove(env: string, id: number): Promise<any>;
 }

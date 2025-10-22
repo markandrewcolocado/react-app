@@ -5,7 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Apistatus } from './entities/apistatus.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Apistatus])],
+  // imports: [TypeOrmModule.forFeature([Apistatus])],
   controllers: [MicroservicesController],
   providers: [MicroservicesService],
 })

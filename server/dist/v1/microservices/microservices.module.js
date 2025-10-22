@@ -10,14 +10,11 @@ exports.MicroservicesModule = void 0;
 const common_1 = require("@nestjs/common");
 const microservices_service_1 = require("./microservices.service");
 const microservices_controller_1 = require("./microservices.controller");
-const typeorm_1 = require("@nestjs/typeorm");
-const apistatus_entity_1 = require("./entities/apistatus.entity");
 let MicroservicesModule = class MicroservicesModule {
 };
 exports.MicroservicesModule = MicroservicesModule;
 exports.MicroservicesModule = MicroservicesModule = __decorate([
     (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forFeature([apistatus_entity_1.Apistatus])],
         controllers: [microservices_controller_1.MicroservicesController],
         providers: [microservices_service_1.MicroservicesService],
     })

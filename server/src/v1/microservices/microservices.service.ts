@@ -8,8 +8,8 @@ import { Repository } from 'typeorm';
 @Injectable()
 export class MicroservicesService {
   constructor(
-    @InjectRepository(Apistatus)
-    private apiStatusRepository: Repository<Apistatus>
+    // @InjectRepository(Apistatus)
+    // private apiStatusRepository: Repository<Apistatus>
   ) {}
 
   create(createMicroserviceDto: CreateMicroserviceDto) {
@@ -18,12 +18,12 @@ export class MicroservicesService {
 
   findAll(env: string) {
     if (!env) throw new Error('Environment is required.');
-
-    return this.apiStatusRepository.find({
-      where: {
-        environment: env
-      }
-    });
+    return 'Return all ms.'
+    // return this.apiStatusRepository.find({
+    //   where: {
+    //     environment: env
+    //   }
+    // });
   }
 
   findOne(id: number) {

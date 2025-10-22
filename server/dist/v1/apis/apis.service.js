@@ -8,26 +8,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ApisService = void 0;
 const common_1 = require("@nestjs/common");
-const typeorm_1 = require("@nestjs/typeorm");
-const typeorm_2 = require("typeorm");
-const api_entity_1 = require("./entities/api.entity");
 let ApisService = class ApisService {
-    apisRepository;
-    constructor(apisRepository) {
-        this.apisRepository = apisRepository;
-    }
+    constructor() { }
     create(createApiDto) {
         return 'This action adds a new api';
     }
     findAll(apiPaginationDto) {
         const query = this.buildPaginationQuery(apiPaginationDto);
-        return this.apisRepository.find(query);
+        return 'Return all apis.';
     }
     buildPaginationQuery(apiPaginationDto) {
         const { provider, catalog, limit, offset } = apiPaginationDto;
@@ -56,7 +47,6 @@ let ApisService = class ApisService {
 exports.ApisService = ApisService;
 exports.ApisService = ApisService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, typeorm_1.InjectRepository)(api_entity_1.Api)),
-    __metadata("design:paramtypes", [typeorm_2.Repository])
+    __metadata("design:paramtypes", [])
 ], ApisService);
 //# sourceMappingURL=apis.service.js.map

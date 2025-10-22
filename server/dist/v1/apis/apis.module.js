@@ -10,14 +10,11 @@ exports.ApisModule = void 0;
 const common_1 = require("@nestjs/common");
 const apis_service_1 = require("./apis.service");
 const apis_controller_1 = require("./apis.controller");
-const typeorm_1 = require("@nestjs/typeorm");
-const api_entity_1 = require("./entities/api.entity");
 let ApisModule = class ApisModule {
 };
 exports.ApisModule = ApisModule;
 exports.ApisModule = ApisModule = __decorate([
     (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forFeature([api_entity_1.Api])],
         controllers: [apis_controller_1.ApisController],
         providers: [apis_service_1.ApisService],
     })

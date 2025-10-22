@@ -13,28 +13,38 @@ exports.AtmsService = void 0;
 const common_1 = require("@nestjs/common");
 const axios_1 = require("@nestjs/axios");
 const rxjs_1 = require("rxjs");
+const uuid_1 = require("uuid");
 let AtmsService = class AtmsService {
     api;
     constructor(api) {
         this.api = api;
     }
-    create(createAtmDto) {
-        return 'This action adds a new atm';
+    async create(createAtmDto, env) {
+        const uuid = (0, uuid_1.v4)();
+        const request = this.api.post(`http://172.18.2.24:8088/${env}/v1/atms`, { guid: uuid, ...createAtmDto });
+        const response = await (0, rxjs_1.lastValueFrom)(request);
+        return response.data;
     }
-    async findAll() {
-        const response = this.api.get('http://172.18.2.24:8088/uat/v1/atms');
-        const test = await (0, rxjs_1.firstValueFrom)(response);
-        console.log(test.data);
-        return test;
+    async findAll(env) {
+        const request = this.api.get(`http://172.18.2.24:8088/${env}/v1/atms`);
+        const response = await (0, rxjs_1.firstValueFrom)(request);
+        return response.data;
     }
-    findOne(id) {
-        return `This action returns a #${id} atm`;
+    async findOne(env, id) {
+        const request = this.api.get(`http://172.18.2.24:8088/${env}/v1/atms/${id}`);
+        const response = await (0, rxjs_1.lastValueFrom)(request);
+        return response.data;
     }
-    update(id, updateAtmDto) {
-        return `This action updates a #${id} atm`;
+    async update(env, id, updateAtmDto) {
+        const request = this.api.put(`http://172.18.2.24:8088/${env}/v1/atms/${id}`, updateAtmDto);
+        const response = await (0, rxjs_1.lastValueFrom)(request);
+        console.log(response.data);
+        return response.data;
     }
-    remove(id) {
-        return `This action removes a #${id} atm`;
+    async remove(env, id) {
+        const request = this.api.delete(`http://172.18.2.24:8088/${env}/v1/atms/${id}`);
+        const response = await (0, rxjs_1.lastValueFrom)(request);
+        return response.data;
     }
 };
 exports.AtmsService = AtmsService;

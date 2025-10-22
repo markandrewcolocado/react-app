@@ -22,56 +22,61 @@ let AtmsController = class AtmsController {
     constructor(atmsService) {
         this.atmsService = atmsService;
     }
-    create(createAtmDto) {
-        return this.atmsService.create(createAtmDto);
+    create(env, createAtmDto) {
+        return this.atmsService.create(createAtmDto, env);
     }
-    findAll() {
-        return this.atmsService.findAll();
+    findAll(env) {
+        return this.atmsService.findAll(env);
     }
-    findOne(id) {
-        return this.atmsService.findOne(+id);
+    findOne(env, id) {
+        return this.atmsService.findOne(env, +id);
     }
-    update(id, updateAtmDto) {
-        return this.atmsService.update(+id, updateAtmDto);
+    update(env, id, updateAtmDto) {
+        return this.atmsService.update(env, +id, updateAtmDto);
     }
-    remove(id) {
-        return this.atmsService.remove(+id);
+    remove(env, id) {
+        return this.atmsService.remove(env, +id);
     }
 };
 exports.AtmsController = AtmsController;
 __decorate([
-    (0, common_1.Post)(),
-    __param(0, (0, common_1.Body)()),
+    (0, common_1.Post)('/:env'),
+    __param(0, (0, common_1.Param)('env')),
+    __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_atm_dto_1.CreateAtmDto]),
+    __metadata("design:paramtypes", [String, create_atm_dto_1.CreateAtmDto]),
     __metadata("design:returntype", void 0)
 ], AtmsController.prototype, "create", null);
 __decorate([
-    (0, common_1.Get)(),
+    (0, common_1.Get)('/:env'),
+    __param(0, (0, common_1.Param)('env')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], AtmsController.prototype, "findAll", null);
 __decorate([
-    (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, common_1.Get)('/:env/:id'),
+    __param(0, (0, common_1.Param)('env')),
+    __param(1, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [String, String]),
     __metadata("design:returntype", void 0)
 ], AtmsController.prototype, "findOne", null);
 __decorate([
-    (0, common_1.Patch)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __param(1, (0, common_1.Body)()),
+    (0, common_1.Put)('/:env/:id'),
+    __param(0, (0, common_1.Param)('env')),
+    __param(1, (0, common_1.Param)('id')),
+    __param(2, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, update_atm_dto_1.UpdateAtmDto]),
+    __metadata("design:paramtypes", [String, String, update_atm_dto_1.UpdateAtmDto]),
     __metadata("design:returntype", void 0)
 ], AtmsController.prototype, "update", null);
 __decorate([
-    (0, common_1.Delete)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, common_1.Delete)('/:env/:id'),
+    __param(0, (0, common_1.Param)('env')),
+    __param(1, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [String, String]),
     __metadata("design:returntype", void 0)
 ], AtmsController.prototype, "remove", null);
 exports.AtmsController = AtmsController = __decorate([
